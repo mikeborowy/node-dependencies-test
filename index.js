@@ -57,13 +57,13 @@ const checkForMissingDependencies = async (dirname, filename) => {
   }
 };
 
-fs.readdir(dirname, async (err, filenames) => {
+fs.readdir(dirname, async (err, filenameArray) => {
   if (err) {
     throw new Error(error);
   }
 
   try {
-    for await (const filename of filenames) {
+    for await (const filename of filenameArray) {
       const result = await checkForMissingDependencies(dirname, filename);
       console.log(result.message);
     }
